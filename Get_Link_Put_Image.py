@@ -36,7 +36,7 @@ def download_image(image_link):
     # Make a GET request to download the image
     file_name = image_link.split('/')[-1]
 
-    directory_path = f"D:\ClarkProjects\VerbutaSS\\"
+    directory_path = f"your_path\\"
     # Check if the request was successful
     image_path = os.path.join(directory_path, file_name)
     response = requests.get(image_link, stream=True)
@@ -58,7 +58,7 @@ def add_image_from_directory(sheetId, columnId, rowId, image_name):
         'Content-Disposition': 'attachment; filename=Test_Sheet',
         'Content-Length': '5463'
     }
-    file_path = f"D:\ClarkProjects\VerbutaSS\{image_name}"
+    file_path = f"your_path{image_name}"
     url = f'https://api.smartsheet.com/2.0/sheets/{sheetId}/rows/{rowId}/columns/{columnId}/cellimages'
 
     # Read the image in binary mode
