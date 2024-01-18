@@ -12,7 +12,7 @@ sheet_Id = 'your_sheet_id'
 
 def get_link_put_image(sheetId):
     header_get={
-    'Authorization': f'Bearer {API_TOKEN}',
+        'Authorization': f'Bearer {API_TOKEN}',
         'Content-Type': 'application/json'
     }
     url = f'https://api.smartsheet.com/2.0/sheets/{sheetId}'
@@ -33,15 +33,13 @@ def get_link_put_image(sheetId):
             add_image_from_directory(sheetId, columnId, row_id, file_name)
 
 def download_image(image_link):
-    # Make a GET request to download the image
     file_name = image_link.split('/')[-1]
-
     directory_path = f"your_path\\"
-    # Check if the request was successful
+
     image_path = os.path.join(directory_path, file_name)
     response = requests.get(image_link, stream=True)
+    # Check if the request was successful
     if response.status_code == 200:
-        # Set the path where you want to save the image
         # Open the file in binary write mode and save the image
         with open(image_path, 'wb') as file:
             for chunk in response.iter_content(chunk_size=128):
